@@ -4,16 +4,21 @@ const { join } = require("path");
 const express = require("express");
 const createError = require("http-errors");
 const logger = require("morgan");
-const serveFavicon = require("serve-favicon");
+//const serveFavicon = require("serve-favicon");
 const indexRouter = require("./routes/index");
 
 const app = express();
 
-app.use(serveFavicon(join(__dirname, "public/images", "favicon.ico")));
+app.use(express.static(join(__dirname, "client/build")));
+//app.use(serveFavicon(join(__dirname, "public/images", "favicon.ico")));
 app.use(logger("dev"));
 app.use(express.json());
 
 app.use("/", indexRouter);
+
+app.get("*", (req, res, next) => {
+  res.sendFile(join(__dirname, "client/build/index.html"));
+});
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
