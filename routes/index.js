@@ -52,7 +52,7 @@ router.post("/", async (req, res, next) => {
         }
       ];
       await transporter.sendMail({
-        from: `FORTE <${process.env.NODEMAIL_MAIL}>`,
+        from: `PG Lists <${process.env.NODEMAIL_MAIL}>`,
         to: mail,
         subject: "[IMPORTANT] New List Price",
         //text: 'This should be the body of the text email'
@@ -61,6 +61,7 @@ router.post("/", async (req, res, next) => {
       <h1 style="color: Black">Hi ${ae}!</h1>
       <h3 style="color: Black">Please dind attached the new List Price Information regarding customer Number ${custNumb}</h3>
       <p style="color: Red">Please keep in mind that list prices are private to each customer.</p>
+      <small>This is an automatic mail, please do not respond.</small>
     `,
         attachments: attachments
       });
