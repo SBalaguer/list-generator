@@ -181,9 +181,7 @@ export class App extends Component {
           onChange={handleInputChange}
           placeholder="Archivo de excel"
         />
-        <button onClick={() => this.createClientObj()}>
-          Create Client Ojb
-        </button>
+        <button onClick={() => this.createClientObj()}>Create</button>
       </div>
     );
   }
